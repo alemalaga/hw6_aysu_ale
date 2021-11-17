@@ -1,0 +1,12 @@
+LICENSE.txt
+setup.cfg
+setup.py
+src/violet/__init__.py
+src/violet/clean.py
+src/violet/estimate.py
+src/violet/hw6.py
+src/violet_pkg_aysu_ale.egg-info/PKG-INFO
+src/violet_pkg_aysu_ale.egg-info/SOURCES.txt
+src/violet_pkg_aysu_ale.egg-info/dependency_links.txt
+src/violet_pkg_aysu_ale.egg-info/requires.txt
+src/violet_pkg_aysu_ale.egg-info/top_level.txt

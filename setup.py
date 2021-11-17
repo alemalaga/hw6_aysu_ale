@@ -20,16 +20,16 @@ def get_requirements(requirements_path='requirements.txt'):
 # or you can create a variable called __version__ inside the __init__.py from
 # the src/your_library folder that has a string with the version as a string.
 setup(
-    name='pink-pkg-aysu-ale',
+    name='violet-pkg-aysu-ale',
     version='0.0.1',
-    description='Learning how to create packages.',
+    description='Learning how to use classes.',
     author='Aysu Demir, Alexandra Malaga',
     author_email='aysu.demir@bse.edu, alexandra.malaga@bse.edu',
     packages=find_packages(where='src', exclude=['tests']),
     package_dir={'': 'src'},
     install_requires=get_requirements(),
     setup_requires=['pytest-runner', 'wheel'],
-    url='https://github.com/whatcanaysu/hw5_aysu_ale.git',
+    url='https://github.com/alemalaga/hw6_aysu_ale.git',
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
