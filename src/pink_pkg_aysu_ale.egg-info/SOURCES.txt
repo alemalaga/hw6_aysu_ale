@@ -1,0 +1,12 @@
+LICENSE.txt
+setup.cfg
+setup.py
+src/pink_pkg_aysu_ale.egg-info/PKG-INFO
+src/pink_pkg_aysu_ale.egg-info/SOURCES.txt
+src/pink_pkg_aysu_ale.egg-info/dependency_links.txt
+src/pink_pkg_aysu_ale.egg-info/requires.txt
+src/pink_pkg_aysu_ale.egg-info/top_level.txt
+src/violet/__init__.py
+src/violet/clean.py
+src/violet/estimate.py
+src/violet/hw6.py
