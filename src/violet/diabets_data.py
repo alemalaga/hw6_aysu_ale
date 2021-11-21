@@ -9,6 +9,11 @@ from sklearn.model_selection import train_test_split
 import pandas as pd
 import hw5
 from hw5 import split
+from abc import ABC, abstractmethod
+from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import PolynomialFeatures
+
 
 class SplitClass:
     def __init__(self,data_name):
@@ -22,8 +27,8 @@ class SplitClass:
 
 name = "sample_diabetes_mellitus_data.csv"
 df = SplitClass(name)
-aysu=df.read_data(name)  
-a,b=df.train_test(aysu)
+all_data=df.read_data(name)  
+train_data,test_data=df.train_test(all_data)
 
 class Preprocessor:
     def __init__(self,data_name):
@@ -37,11 +42,58 @@ class Preprocessor:
         df["height"].fillna(h_mean, inplace=True)
         df["weight"].fillna(w_mean, inplace=True)
         return df
-ale = Preprocessor(aysu)
-new_df=ale.clean_nan(aysu)
-very_new=ale.fill_nan(aysu)
+data_prep = Preprocessor(all_data)
+new_df=data_prep.clean_nan(all_data)
+very_new=data_prep.fill_nan(all_data)
 
-class Transfrom(Preprocessor):
-    def __init__(self,):
-        super().__init__(df):
-            
+
+class Transform(ABC):
+    @abstractmethod
+    def standardize_feaures(self):
+        pass
+    
+    @abstractmethod
+    def polynomial_features(self):
+        pass
+    
+    
+class Standardize(Transform):
+    def __init__(self, df: pd.DataFrame):
+        self.df = df
+
+    def standardize_feaures(self):
+        scl = StandardScaler()
+        self.scaled = scl.fit_transform(self.df)
+        self.scaled = pd.DataFrame(self.scaled, columns = self.df.columns, index = self.df.index)
+    
+    def polynomial_features(self):
+        pol = PolynomialFeatures(2)
+        self.polynized = pol.fit_transform(self.df)
+        pol_cols = pol.get_feature_names_out(self.df.columns)
+        self.polynized = pd.DataFrame(self.polynized, columns = pol_cols, index = self.df.index)
+    
+
+class Model:
+    def __init__(self, col_features: pd.DataFrame, col_target: pd.Series):
+        self.col_features = col_features
+        self.col_target = col_target
+    
+    def train(self):
+        reg = LinearRegression()
+        self.fitted = reg.fit(self.col_features, self.col_target)
+        
+    def predict(self):
+        self.predict = self.fitted.predict(self.col_target)
+        print(self.predict)
+
+
+numeric_data = very_new.select_dtypes(include = ['float', 'int'])
+   
+numeric_data = numeric_data.dropna()
+test_scaled = Standardize(numeric_data)
+test_scaled.standardize_feaures()
+test_scaled.polynomial_features()   
+         
+our_model = Model(test_scaled.polynized.drop('weight', axis = 1), test_scaled.polynized['weight'])
+our_model.train()
+our_model.predict()
