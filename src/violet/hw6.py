@@ -67,8 +67,8 @@ class Patient:
                 return 0.01
         else :
             covid_symptoms = ['fever', 'cough', 'anosmia']
-            nn = len(set(self.symptoms).intersection(covid_symptoms))
-            return 0.05 + 0.1*nn
+            sympton_num = len(set(self.symptoms).intersection(covid_symptoms))
+            return 0.05 + 0.1*sympton_num
 
 # example = Patient("mark", ["fever", "cough"])    
 # example.add_test("blood_count", [123,456,789])
