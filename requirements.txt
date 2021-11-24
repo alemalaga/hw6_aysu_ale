@@ -1,7 +1,3 @@
 pandas == 1.3.4
 numpy == 1.21.4
 scikit-learn == 1.0.1
-geopy == 2.2.0
-random == 3.10.0
-abcplus == 0.1.0
-math == 3.10.0

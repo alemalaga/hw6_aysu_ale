@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Nov 23 20:33:47 2021
-
-@author: Aysu
-"""
-
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 
@@ -26,3 +19,9 @@ class Model:
     def predict(self,  df: pd.DataFrame):
         Xtest = df[self._col_features]
         return self.model.predict_proba(Xtest)[:,1]
+    
+# numeric_data = test_data.select_dtypes(include = ['float', 'int']).dropna()
+# test_standardize = Standardize(numeric_data)
+# answ_standardize = test_standardize.change()
+# test_polynomial = Polynomial(numeric_data)
+# answ_polynomial = test_polynomial.change(2)   

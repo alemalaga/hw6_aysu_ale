@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Nov 23 20:22:38 2021
-
-@author: Aysu
-"""
-
 import pandas as pd
 
 class Preprocessor:
@@ -19,3 +12,7 @@ class Preprocessor:
         for x in fill_columns:
             xmean=self.df[x].mean()
             self.df[x].fillna(xmean, inplace=True)
+            
+# data_prep = Preprocessor(train_data)
+# data_prep.clean_nan(['age', 'gender', 'ethnicity'])
+# data_prep.fill_nan(['height', 'weight'])

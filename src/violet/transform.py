@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Nov 23 20:26:36 2021
-
-@author: Aysu
-"""
 import pandas as pd
 from abc import ABCMeta, abstractmethod
 from sklearn.preprocessing import StandardScaler, PolynomialFeatures
@@ -34,4 +28,11 @@ class Polynomial(Transform):
         self.polynized = pd.DataFrame(pol_df, 
                                       columns = pol_cols, 
                                       index = self.df.index)
-    
+
+
+# features = ['age', 'height', 'weight', 'aids', 'cirrhosis', 'hepatic_failure',
+#             'immunosuppression', 'leukemia', 'lymphoma', 'solid_tumor_with_metastasis']
+# target = ['diabetes_mellitus']
+# test_model = Model(features, target, 500)
+# test_model.train(train_data)
+# test_model.predict(test_data.dropna())
