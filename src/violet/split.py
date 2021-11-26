@@ -8,6 +8,7 @@ class SplitClass:
     def train_test(self, prop_test):
         all_data = pd.read_csv(self.data_name)
         return train_test_split(all_data, test_size = prop_test)
+
     
 
 
