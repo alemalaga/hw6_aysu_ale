@@ -67,8 +67,8 @@ class Patient:
                 return 0.01
         else :
             covid_symptoms = ['fever', 'cough', 'anosmia']
-            nn = len(set(self.symptoms).intersection(covid_symptoms))
-            return 0.05 + 0.1*nn
+            sympton_num = len(set(self.symptoms).intersection(covid_symptoms))
+            return 0.05 + 0.1*sympton_num
 
 # example = Patient("mark", ["fever", "cough"])    
 # example.add_test("blood_count", [123,456,789])
@@ -119,7 +119,6 @@ class Deck:
     
     def shuffle(self):
         random.shuffle(self.deck)
-        self.deck = self.deck
     
     def draw(self):
         self.shuffle()
@@ -151,9 +150,9 @@ class Deck:
 # compute_perimeter() that will implement the formula to compute the perimiter of the plane figure.
 # compute_surface() that will implement the formula to compute the surface of the plane figure.
 
-from abc import abstractmethod
+from abc import abstractmethod, ABCMeta
 
-class PlaneFigure():
+class PlaneFigure(metaclass = ABCMeta):
     
     @abstractmethod
     def compute_perimeter(self):
@@ -177,14 +176,14 @@ class Triangle(PlaneFigure):
         self.side2 = side2
         self.height = height
     
-    def compute_permiter(self):
+    def compute_perimeter(self):
         return self.base + self.side1 + self.side2
     
     def compute_surface(self):
         return (self.base * self.height) / 2
 
 # example = Triangle(4,3,5,3)
-# example.compute_permiter()
+# example.compute_perimeter()
 # example.compute_surface()
 
 # 3.3 Create a child class called "Rectangle" that inherits from "PlaneFigure" 
